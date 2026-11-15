@@ -1,0 +1,26 @@
+server:
+  port: 8081
+spring:
+  profiles:
+    default: kafka
+  application:
+    name: servico-busca
+  kafka:
+    bootstrap-servers: ${KAFKA_SERVIDORES:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      properties:
+        delivery.timeout.ms: 10000
+        request.timeout.ms: 5000
+        max.block.ms: 5000
+    consumer:
+      group-id: servico-busca
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+fontes:
+  atraso-a-ms: ${ATRASO_A_MS:300}
+  atraso-b-ms: ${ATRASO_B_MS:800}
+  atraso-c-ms: ${ATRASO_C_MS:1500}
+  probabilidade-falha: ${PROBABILIDADE_FALHA:0.0}

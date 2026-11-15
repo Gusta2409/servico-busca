@@ -1,0 +1,11 @@
+/target/
+.idea/
+*.iml
+.vscode/
+.env
+.env.*
+!/.env.exemplo
+*.log
+.ferramentas/
+Thumbs.db
+.DS_Store
